@@ -1,35 +1,46 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
 import './App.css'
+import CardList from './components/CardList'
+
+
+const kbaseURL = 'http://127.0.0.1:5000';
+
+
+const getAllCardsApi = () => {
+  return axios.get(`${kbaseURL}/cards`)
+  .then( response => {
+    const apiCards = response.data;
+    console.log('API Response:', apiCards);
+    const newCards = apiCards;
+    return newCards;
+  })
+  .catch(error => {
+    console.log(error);
+  });
+};
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [cardData, setCardData] = useState([]);
+
+  const getAllCards = () => {
+    getAllCardsApi()
+    .then((cards) => {
+      setCardData(cards);
+    });
+  };
+
+  useEffect(() => {
+    getAllCards();
+  }, []);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="App">
+      <h2>Card For Pick-Me-Up Quotes</h2>
+      <CardList cards={cardData} />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    );
+  }
 
-export default App
+export default App;
