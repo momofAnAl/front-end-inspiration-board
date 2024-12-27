@@ -26,6 +26,8 @@ h2 {
 .boards__container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .boards__list {
@@ -55,7 +57,7 @@ h2 {
 .new-board-form__toggle-btn,
 .new-card-form__form-submit-btn {
   padding: 0.5em;
-  background-color: white;
+  background-color: rgb(252, 3, 3);
   border: 2px solid black;
 }
 
