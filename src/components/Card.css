@@ -1,18 +1,25 @@
-.tasks__item__toggle {
-    cursor: pointer;
-    width: 100%;
-    text-align: left;
-    padding: 0.85em 2.25em 0.85em 1em;
-    background-color: rgba(0, 0, 0, 0.05);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-  }
-  
-  .tasks__item {
-    display: flex;
-    align-items: top;
-  }
-  
-  .tasks__item__toggle:hover {
-    background-color: rgba(0, 0, 0, 0.1);
-    border-color: rgba(0, 0, 0, 0.15);
-  }
+.card-item {
+  font-family: "Concert One", cursive;
+  background-color: pink;
+  box-shadow: -10px 7px 7px lightgrey;
+  min-height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.card-item button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 0.3rem 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.card-item button:hover {
+  background-color: darkred;
+}

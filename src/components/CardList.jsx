@@ -2,18 +2,20 @@ import PropTypes from 'prop-types';
 import Card from './Card.jsx';
 import './CardList.css';
 
-
-const CardList = ({ cards }) => {
-    const cardComponents = cards.map((card) => (
-        <Card 
-            key={card.id} 
-            id={card.id}
-            message={card.message}
-        />
-    ));
-
-    return <div className="card-items__container">{cardComponents}</div>;
-};
+function CardList({ cards, onDelete }) {
+    return (
+        <div className="card-items-container">
+            {cards.map((card) => (
+                <Card 
+                    key={card.id} 
+                    id={card.id}
+                    message={card.message} 
+                    onDelete={onDelete} 
+                />
+            ))}
+        </div>
+    );
+}
 
 CardList.propTypes = {
     cards: PropTypes.arrayOf(
@@ -22,12 +24,7 @@ CardList.propTypes = {
             message: PropTypes.string.isRequired,
         })
     ).isRequired,
+    onDelete: PropTypes.func.isRequired,
 };
 
-
 export default CardList;
-
-
-
-
-

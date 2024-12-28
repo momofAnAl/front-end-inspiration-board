@@ -1,47 +1,48 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
-const NewCardForm = ({ handleSubmit, cardId }) => {
-  const kDefaultFormState = {
+const NewCardForm = ({ onCardAdd, boardId }) => {
+  const [cardForm, setCardForm] = useState({
     message: '',
-  };
+  });
 
-  const [formData, setFormData] = useState(kDefaultFormState);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    onCardAdd(cardForm);
+    setCardForm({
+      message: '',
+    });
+  };
 
   const handleChange = (event) => {
-    const fieldName = event.target.name;
-    const fieldValue = event.target.value;
-
-    const newFormData = { ...formData, [fieldName]: fieldValue };
-    setFormData(newFormData);
-  };
-
-  const onHandleSubmit = (event) => {
-    event.preventDefault();
-    handleSubmit(formData);
-    setFormData(kDefaultFormState);
+    const {name, value} = event.target;
+    setCardForm({
+      ...cardForm,
+      [name]: value
+    });
   };
 
   return (
-    <section className="cards__container">
-      {/* <section>
-        <h2> Cards for Pick-me-up Quotes</h2>
-      </section> */}
-      <section className="new-card-form__container">
-        <h2>{cardId ? 'Update the card' : 'Add a new card'}</h2>
-          <form className="new-card-form__form" onSubmit={onHandleSubmit}>
-              <label htmlFor="message">Message:</label>
-              <input
-                  type="text"
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-              />
-              <button type="submit">{cardId ? 'Update' : 'Submit'}</button>
-          </form>
-      </section>
-    </section>
-	);
+    <form className="new-card-form" onSubmit={handleSubmit}>
+      <div>
+        <label htmlFor="message">Message: </label>
+        <input
+        id="text"
+        name="message"
+        value={cardForm.message}
+        onChange={handleChange}
+        />
+      </div>
+      <button className="new-card-form-submit-btn" type="submit">
+          Submit
+      </button>
+    </form>
+  );
+};
+
+NewCardForm.propTypes = {
+    onCardAdd: PropTypes.func.isRequired,
+    boardId: PropTypes.number.isRequired,
 };
 
 export default NewCardForm;

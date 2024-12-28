@@ -1,30 +1,21 @@
 import PropTypes from 'prop-types';
-import './Card.css'
+import './Card.css';
 
-const Card = ({ 
-    id, 
-    message 
-}) => {
-
-
+function Card({ id, message, likes_count, onDelete }) {
   return (
-    <section className="card__container">
-      <h2> Cards for Pick-me-up Quotes </h2>
-      <div className="card-items__container">
-        <div className="card-item">
-          <p className="card-item__message">{message}</p>
-        </div>
+      <div className="card-item">
+          <p>{message}</p>
+          <p>Likes: {likes_count}</p>
+          <button onClick={() => onDelete(id)}>Delete</button>
       </div>
-    </section>
   );
 }
 
-
 Card.propTypes = {
-    id: PropTypes.number.isRequired,
-    message: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+  message: PropTypes.string.isRequired,
+  likes_count: PropTypes.number.isRequired,
+  onDelete: PropTypes.func.isRequired,
 };
 
-export default Card
-
-
+export default Card;

@@ -1,0 +1,36 @@
+.board-container {
+    border: 1px solid lightgrey;
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem 0;
+    background-color: #f9f9f9;
+}
+
+.board-container h2 {
+    font-family: "Permanent Marker", cursive;
+    margin-bottom: 1rem;
+}
+
+.board-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.board-item {
+    padding: 0.5rem 1rem;
+    margin-bottom: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #fff;
+    transition: background-color 0.3s;
+}
+
+.board-item:hover {
+    background-color: #eaeaea;
+}
+
+.board-item:active {
+    background-color: #d0d0d0;
+}
