@@ -111,7 +111,8 @@ function App() {
                         </div>
                         <h2>Cards for Board {selectedBoardId || 'None Selected'}</h2>
                         <div className="cards-container">
-                            <CardList cards={cardData} onDelete={handleDeleteCard} />
+                            {/* madina add empty array if cardData is undefined */}
+                            <CardList cards={cardData || []} onDelete={handleDeleteCard} />   
                         </div>
                     </div>
 
