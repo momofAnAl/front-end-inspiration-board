@@ -9,7 +9,7 @@ function CardList({ cards, onDelete }) {
                 <Card 
                     key={card.id} 
                     id={card.id}
-                    message={card.message}
+                    message={card.message || ""} // madina add if no message
                     likes_count={card.likes_count || 0} // madina add like count, 0 for default value
                     onDelete={onDelete} 
                 />
