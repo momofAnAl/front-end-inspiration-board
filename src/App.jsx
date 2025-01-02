@@ -28,8 +28,8 @@ function App() {
     const handleAddBoard = (board) => {
       axios.post(`${kBaseURL}/boards`, board)
           .then((response) => {
-              console.log('New Board Added:', response.data);
-              setBoardData((prevData) => [...prevData, response.data]);
+              console.log('New Board Added:', response.data.board);
+              setBoardData((prevData) => [...prevData, response.data.board]);
           })
           .catch((error) => {
               console.error('Error adding board:', error);
@@ -47,8 +47,8 @@ function App() {
         if (selectedBoardId) {
             axios.get(`${kBaseURL}/boards/${selectedBoardId}/cards`)
                 .then((response) => {
-                    console.log('Cards', response.data);
-                    setCardData(response.data);
+                    console.log('Cards', response.data.cards);
+                    setCardData(response.data.cards);
                 })
                 .catch((error) => {
                     console.error('Error fetching cards:', error);
@@ -64,8 +64,9 @@ function App() {
         }
         axios.post(`${kBaseURL}/boards/${selectedBoardId}/cards`, card)
             .then((response) => {
-                console.log('New Card Added:', response.data);
-                setCardData((prevData) => [...prevData, response.data]);
+                const newCard = response.data;
+                console.log('New Card Added:', newCard);
+                setCardData((prevData) => [...prevData, newCard]);
             })
             .catch((error) => {
                 console.error('Error adding card:', error);
@@ -107,7 +108,7 @@ function App() {
                                     {board.title} - {board.owner}
                                 </button>
                               </li>    
-                            ))};
+                            ))}
                         </div>
                         <h2>Cards for Board {selectedBoardId || 'None Selected'}</h2>
                         <div className="cards-container">

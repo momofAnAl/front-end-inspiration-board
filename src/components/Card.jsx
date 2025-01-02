@@ -14,8 +14,8 @@ function Card({ id, message, likes_count, onDelete }) {
 Card.propTypes = {
   id: PropTypes.number.isRequired,
   message: PropTypes.string.isRequired,
-  likes_count: PropTypes.number.isRequired,
-  onDelete: PropTypes.func.isRequired,
+  likes_count: PropTypes.number,
+  onDelete: PropTypes.func,
 };
 
 export default Card;

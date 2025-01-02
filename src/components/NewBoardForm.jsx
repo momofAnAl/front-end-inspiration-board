@@ -10,6 +10,7 @@ const NewBoardForm = ({onBoardAdd}) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        
         onBoardAdd(boardForm);
         setBoardForm({
             title: '',
