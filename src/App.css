@@ -1,8 +1,9 @@
 body {
-  padding-left: 100px;
+  display: flex;
   font-family: 'Open Sans', sans-serif;
   color: black;
   background-color: white;
+  flex-direction: column;
 }
 
 h1,
@@ -55,17 +56,15 @@ h2 {
   margin-top: 1.5rem;
 }
 
-/* .cards-container h2 {
-  margin-bottom: 1rem;
-} */
 
 .cards-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 2rem;
 }
 
 .card-item {
+  margin-top: 20px;
   font-family: "Concert One", cursive;
   background-color: pink;
   box-shadow: -10px 7px 7px lightgrey;
@@ -73,7 +72,6 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
   text-align: center;
 }
 
