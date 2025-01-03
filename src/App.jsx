@@ -99,11 +99,12 @@ function App() {
     const handleLikeCard = (id) => {
         axios.patch(`${kBaseURL}/cards/${id}/like`)
             .then((response) => {
-                const updatedCard = convertFromApi(response.data);
-                console.log('Card Liked:', updatedCard);
+                console.log('Card Liked:', response.data);
                 setCardData((prevData) =>
                     prevData.map((card) =>
-                        card.id === id ? updatedCard : card
+                        card.id === id 
+                            ? {...card, likesCount: response.data.likes_count || 0}
+                            : card
                     )
                 );
             })

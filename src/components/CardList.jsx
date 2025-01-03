@@ -10,6 +10,7 @@ function CardList({ cards, onDelete, onLike }) {
                     key={card.id} 
                     id={card.id}
                     message={card.message} 
+                    likesCount={card.likesCount}
                     onDelete={onDelete} 
                     onLike={onLike}
                 />
@@ -23,6 +24,7 @@ CardList.propTypes = {
         PropTypes.shape({
             id: PropTypes.number.isRequired,
             message: PropTypes.string.isRequired,
+            likesCount: PropTypes.number,
         })
     ).isRequired,
     onDelete: PropTypes.func.isRequired,

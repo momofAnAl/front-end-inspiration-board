@@ -7,9 +7,9 @@ const Card = ({ id, message, likesCount, onLike, onDelete }) => {
     <div className="card-item">
       <p className="card-message">{message}</p>
       <div className="card-footer">
-        <p className="card-likes">Likes: {likesCount}</p>
+        <p className="card-likes">{likesCount} 💖</p>
         <div className="card-buttons">
-            <button className="like-button" onClick={() => onLike(id)}>❤️</button>
+            <button className="like-button" onClick={() => onLike(id)}>+1</button>
             <button className="delete-button" onClick={() => onDelete(id)}>Delete</button>
         </div>
       </div>
