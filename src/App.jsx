@@ -6,6 +6,14 @@ import NewCardForm from './components/NewCardForm';
 import NewBoardForm from './components/NewBoardForm';
 
 const kBaseURL = 'http://127.0.0.1:5000';
+const convertFromApi = (apiCard) => {
+    return {
+        id: apiCard.id,
+        message: apiCard.message,
+        likes_count: apiCard.likes_count || 0,
+        board_id: apiCard.board_id,
+    };
+};
 
 function App() {
     const [boardData, setBoardData] = useState([]);
@@ -48,7 +56,7 @@ function App() {
             axios.get(`${kBaseURL}/boards/${selectedBoardId}/cards`)
                 .then((response) => {
                     console.log('Cards', response.data.cards);
-                    setCardData(response.data.cards);
+                    setCardData(response.data.cards.map(convertFromApi));
                 })
                 .catch((error) => {
                     console.error('Error fetching cards:', error);
@@ -64,7 +72,7 @@ function App() {
         }
         axios.post(`${kBaseURL}/boards/${selectedBoardId}/cards`, card)
             .then((response) => {
-                const newCard = response.data;
+                const newCard = convertFromApi(response.data);
                 console.log('New Card Added:', newCard);
                 setCardData((prevData) => [...prevData, newCard]);
             })
@@ -82,6 +90,23 @@ function App() {
             })
             .catch((error) => {
                 console.error('Error deleting card:', error);
+            });
+    };
+
+    // handle like counts
+    const handleLikeCard = (id) => {
+        axios.patch(`${kBaseURL}/cards/${id}/like`)
+            .then((response) => {
+                const updatedCard = convertFromApi(response.data);
+                console.log('Card Liked:', updatedCard);
+                setCardData((prevData) =>
+                    prevData.map((card) =>
+                        card.id === id ? updatedCard : card
+                    )
+                );
+            })
+            .catch((error) => {
+                console.error('Error liking card:', error);
             });
     };
 
@@ -112,7 +137,7 @@ function App() {
                         </div>
                         <h2>Cards for Board {selectedBoardId || 'None Selected'}</h2>
                         <div className="cards-container">
-                            <CardList cards={cardData} onDelete={handleDeleteCard} />
+                            <CardList cards={cardData} onDelete={handleDeleteCard} onLike={handleLikeCard} />
                         </div>
                     </div>
 
