@@ -1,9 +1,12 @@
 body {
   display: flex;
+  flex-wrap:wrap;
   font-family: 'Open Sans', sans-serif;
   color: black;
-  background-color: white;
+  background-color: #FEFAE0;
   flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
 }
 
 h1,
@@ -11,38 +14,44 @@ h2 {
   font-family: "Permanent Marker", cursive;
   padding: 0.6em 1em;
   display: inline-block;
-  color: rgb(254, 92, 92);
+  background-color: rgb(252, 192, 220);
+  color: rgb(19, 18, 18);
 }
 
 h1 {
-  background-color: rgb(252, 252, 192);
+  background-color: rgb(252, 192, 220);
   transform: rotate(-5deg) skew(-10deg);
 }
 
 h2 {
-  border: 2px solid black;
-  box-shadow: -15px 7px 1px black;
+  border: 2px solid rgb(153, 93, 133);
+  box-shadow: -15px 7px 1px #884971;
 }
 
 .page-container {
-  display: grid;
+  /* display: grid; */
+  display: flex;
+  flex-wrap:wrap;
   grid-template-columns: 2fr 2fr;
-  gap: 40rem;
+  gap: 20rem; 
 }
 
 .boards-container {
   display: flex;
+  flex-wrap:wrap;
   flex-direction: column;
   gap: 1.5rem;
 }
+
 
 .boards-list {
   max-height: 10rem;
   min-height: 10rem;
   overflow-y: auto;
   margin-right: 2rem;
-  border: rgb(103, 102, 102) solid 1px;
+  border: rgb(16, 16, 16) solid 1px;
   padding: 2rem;
+  background-color: white;
 }
 
 
@@ -65,7 +74,7 @@ h2 {
 
 .card-item {
   margin-top: 20px;
-  font-family: "Concert One", cursive;
+  font-family: "Arial", sans-serif;
   background-color: pink;
   box-shadow: -10px 7px 7px lightgrey;
   min-height: 200px;
@@ -121,3 +130,4 @@ footer {
   text-align: center;
   margin-top: 2rem;
 }
+

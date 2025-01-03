@@ -41,6 +41,8 @@ function App() {
       setSelectedBoardId(boardId);
     };
 
+    //Select board by title
+    const selectedBoardTitle = boardData.find((board) => board.id === selectedBoardId)?.title;
 
     // Fetch cards for selected board
     useEffect(() => {
@@ -110,7 +112,7 @@ function App() {
                               </li>    
                             ))}
                         </div>
-                        <h2>Cards for Board {selectedBoardId || 'None Selected'}</h2>
+                        <h2>Cards for Board: {selectedBoardTitle}</h2>
                         <div className="cards-container">
                             <CardList cards={cardData} onDelete={handleDeleteCard} />
                         </div>

@@ -3,11 +3,13 @@ import './Card.css';
 
 function Card({ id, message, likes_count, onDelete }) {
   return (
-      <div className="card-item">
-          <p>{message}</p>
-          <p>Likes: {likes_count}</p>
-          <button onClick={() => onDelete(id)}>Delete</button>
-      </div>
+    <div className="card-item">
+    <p className="message">{message}</p>
+    <div className="card-actions">
+      <p>Likes: {likes_count}</p>
+      <button onClick={() => onDelete(id)}>Delete</button>
+    </div>
+  </div>
   );
 }
 
