@@ -26,53 +26,42 @@ h2 {
 
 .page-container {
   display: grid;
-  grid-template-columns: 2fr 2fr;
-  gap: 40rem;
+  grid-template-columns: 4fr 4fr 0.5fr;
+  gap: 2rem;
+  padding: 2%;
+  box-sizing: border-box;
+  align-items: start;
 }
 
-.boards-container {
+.form__row {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 2rem;
+  padding: 1rem;
+  background-color: #fdfdfd;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  max-width: 350px;
+  margin-left: auto;
 }
 
 .boards-list {
-  max-height: 10rem;
-  min-height: 10rem;
   overflow-y: auto;
-  margin-right: 2rem;
   border: rgb(103, 102, 102) solid 1px;
+  border-radius: 10px;
   padding: 2rem;
 }
-
 
 .selected-board {
   margin-top: 1.5rem;
   font-size: 1.2rem;
 }
 
-
-.cards-container {
-  margin-top: 1.5rem;
-}
-
-
 .cards-container {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
-}
-
-.card-item {
-  margin-top: 20px;
-  font-family: "Concert One", cursive;
-  background-color: pink;
-  box-shadow: -10px 7px 7px lightgrey;
-  min-height: 200px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+  margin-top: 1.5rem;
 }
 
 .new-board-form-container,

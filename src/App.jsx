@@ -10,8 +10,8 @@ const convertFromApi = (apiCard) => {
     return {
         id: apiCard.id,
         message: apiCard.message,
-        likes_count: apiCard.likes_count || 0,
-        board_id: apiCard.board_id,
+        likesCount: apiCard.likes_count || 0,
+        boardId: apiCard.board_id,
     };
 };
 
@@ -142,7 +142,7 @@ function App() {
                     </div>
 
                     {/* Forms Section */}
-                    <div className="form__row">
+                    <div className="form-row">
                         <div className="new-board-form-container">
                             <h2>Add a New Board</h2>
                             <NewBoardForm onBoardAdd={handleAddBoard} />

@@ -1,25 +1,58 @@
 .card-item {
+  margin-top: 20px;
   font-family: "Concert One", cursive;
   background-color: pink;
   box-shadow: -10px 7px 7px lightgrey;
-  min-height: 150px;
+  width: 300px;
+  height: 250px;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: space-between;
   text-align: center;
   padding: 1rem;
-  border-radius: 8px;
+  border-radius: 10px;
 }
 
-.card-item button {
-  background-color: red;
-  color: white;
+.card-message {
+  flex-grow: 1;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: auto; 
+  padding-top: 0.5rem;
+}
+
+.card-likes {
+  font-size: 1rem;
+  font-style: italic;
+}
+
+.card-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.like-button, .delete-button {
+  padding: 0.5rem 1rem;
   border: none;
-  padding: 0.3rem 0.5rem;
-  border-radius: 4px;
+  border-radius: 5px;
+  font-family: "Concert One", cursive;
   cursor: pointer;
 }
 
-.card-item button:hover {
-  background-color: darkred;
+.like-button {
+  background-color: #ff7f7f;
+  color: white;
 }
+
+.delete-button {
+  background-color: #d9534f;
+  color: white;
+}
+

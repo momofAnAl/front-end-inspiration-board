@@ -4,12 +4,16 @@ import './Card.css';
 const Card = ({ id, message, likesCount, onLike, onDelete }) => {
 
   return (
-      <div className="card-item">
-          <p>{message}</p>
-          <p>Likes: {likesCount}</p>
-          <button onClick={() => onLike(id)}>❤️</button>
-          <button onClick={() => onDelete(id)}>Delete</button>
+    <div className="card-item">
+      <p className="card-message">{message}</p>
+      <div className="card-footer">
+        <p className="card-likes">Likes: {likesCount}</p>
+        <div className="card-buttons">
+            <button className="like-button" onClick={() => onLike(id)}>❤️</button>
+            <button className="delete-button" onClick={() => onDelete(id)}>Delete</button>
+        </div>
       </div>
+    </div>
   );
 }
 
