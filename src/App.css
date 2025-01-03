@@ -45,8 +45,6 @@ h2 {
 
 
 .boards-list {
-  max-height: 10rem;
-  min-height: 10rem;
   overflow-y: auto;
   margin-right: 2rem;
   border: rgb(16, 16, 16) solid 1px;
@@ -54,17 +52,10 @@ h2 {
   background-color: white;
 }
 
-
 .selected-board {
   margin-top: 1.5rem;
   font-size: 1.2rem;
 }
-
-
-.cards-container {
-  margin-top: 1.5rem;
-}
-
 
 .cards-container {
   display: flex;

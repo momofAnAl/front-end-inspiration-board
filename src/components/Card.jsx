@@ -1,23 +1,28 @@
 import PropTypes from 'prop-types';
 import './Card.css';
 
-function Card({ id, message, likes_count, onDelete }) {
+const Card = ({ id, message, likesCount, onLike, onDelete }) => {
+
   return (
     <div className="card-item">
-    <p className="message">{message}</p>
-    <div className="card-actions">
-      <p>Likes: {likes_count}</p>
-      <button onClick={() => onDelete(id)}>Delete</button>
+      <p className="card-message">{message}</p>
+      <div className="card-footer">
+        <p className="card-likes">Likes: {likesCount}</p>
+        <div className="card-buttons">
+            <button className="like-button" onClick={() => onLike(id)}>❤️</button>
+            <button className="delete-button" onClick={() => onDelete(id)}>Delete</button>
+        </div>
+      </div>
     </div>
-  </div>
   );
 }
 
 Card.propTypes = {
   id: PropTypes.number.isRequired,
   message: PropTypes.string.isRequired,
-  likes_count: PropTypes.number,
+  likesCount: PropTypes.number,
   onDelete: PropTypes.func,
+  onLike: PropTypes.func,
 };
 
 export default Card;
