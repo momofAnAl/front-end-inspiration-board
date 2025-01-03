@@ -28,8 +28,8 @@ function App() {
     const handleAddBoard = (board) => {
       axios.post(`${kBaseURL}/boards`, board)
           .then((response) => {
-              console.log('New Board Added:', response.data.board);
-              setBoardData((prevData) => [...prevData, response.data.board]);
+              console.log('New Board Added:', response.data);
+              setBoardData((prevData) => [...prevData, response.data]);
           })
           .catch((error) => {
               console.error('Error adding board:', error);
