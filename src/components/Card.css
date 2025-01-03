@@ -18,17 +18,37 @@
   
 }
 
-.card-item button {
-  background-color: rgb(255, 0, 200);
-  color: white;
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: auto;
+  padding-top: 0.5rem;
+}
+
+.card-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.like-button,
+.delete-button {
+  padding: 0.5rem 1rem;
   border: none;
   border-radius: 5px;
   font-family: "Concert One", cursive;
   cursor: pointer;
-} 
+}
 
-.card-item button:hover {
-  background-color: darkred;
-} 
+.like-button {
+  background-color: #ff7f7f;
+  color: white;
+}
+
+.delete-button {
+  background-color: #d9534f;
+  color: white;
+}
 
 
