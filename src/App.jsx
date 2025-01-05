@@ -6,7 +6,7 @@ import NewCardForm from './components/NewCardForm';
 import NewBoardForm from './components/NewBoardForm';
 import Board from './components/Board';
 
-const kBaseURL = 'http://127.0.0.1:5000';
+const kBaseURL = 'https://inspired-minds.onrender.com';
 const convertFromApi = (apiCard) => {
     return {
         id: apiCard.id,
