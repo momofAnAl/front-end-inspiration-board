@@ -97,24 +97,44 @@ h2 {
   padding: 0.5em;
   border: 1px solid black;
   width: 100%;
+  background-color: whitesmoke;
 }
 
 .new-board-form-submit-btn,
 .new-card-form-submit-btn {
   padding: 0.5em;
-  background-color: white;
+  background-color: rgb(7, 7, 7);
+  text-align: center;
+  color: white;
   border: 2px solid black;
   cursor: pointer;
 }
 
 .new-board-form-submit-btn:hover,
 .new-card-form-submit-btn:hover {
-  background-color: lightgrey;
+  background-color: rgb(128, 126, 126);
 }
 
-.new-board-form__toggle-btn {
-  margin-top: 1rem;
+.new-board-form-toggle-button {
+  background-color: rgb(7, 7, 7);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
   cursor: pointer;
+  border: 2px solid black;
+  margin-top: 1rem;
+}
+
+.new-board-form {
+  transition: visibility 0.3s ease, opacity 0.3s ease;
+}
+
+.new-board-form.hidden {
+  visibility: hidden;
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
 }
 
 footer {

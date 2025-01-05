@@ -4,6 +4,7 @@ import './App.css';
 import CardList from './components/CardList';
 import NewCardForm from './components/NewCardForm';
 import NewBoardForm from './components/NewBoardForm';
+import Board from './components/Board';
 
 const kBaseURL = 'http://127.0.0.1:5000';
 const convertFromApi = (apiCard) => {
@@ -19,6 +20,7 @@ function App() {
     const [boardData, setBoardData] = useState([]);
     const [selectedBoardId, setSelectedBoardId] = useState(null);
     const [cardData, setCardData] = useState([]);
+    const [showNewBoardForm, setShowNewBoardForm] = useState(true);
 
     // Fetch all boards
     useEffect(() => {
@@ -34,19 +36,19 @@ function App() {
 
     // Add New Board
     const handleAddBoard = (board) => {
-      axios.post(`${kBaseURL}/boards`, board)
-          .then((response) => {
-              console.log('New Board Added:', response.data);
-              setBoardData((prevData) => [...prevData, response.data]);
-          })
-          .catch((error) => {
-              console.error('Error adding board:', error);
-          });
+        axios.post(`${kBaseURL}/boards`, board)
+            .then((response) => {
+                console.log('New Board Added:', response.data);
+                setBoardData((prevData) => [...prevData, response.data]);
+            })
+            .catch((error) => {
+                console.error('Error adding board:', error);
+            });
     };
 
     // Select Board
     const handleSelectBoard = (boardId) => {
-      setSelectedBoardId(boardId);
+        setSelectedBoardId(boardId);
     };
 
     //Select board by title
@@ -102,8 +104,8 @@ function App() {
                 console.log('Card Liked:', response.data);
                 setCardData((prevData) =>
                     prevData.map((card) =>
-                        card.id === id 
-                            ? {...card, likesCount: response.data.likes_count || 0}
+                        card.id === id
+                            ? { ...card, likesCount: response.data.likes_count }
                             : card
                     )
                 );
@@ -112,6 +114,11 @@ function App() {
                 console.error('Error liking card:', error);
             });
     };
+
+    //Toggle NewBoardForm visibility
+    const toggleNewBoardForm = () => {
+        setShowNewBoardForm((prev) => !prev);
+    }
 
     return (
         <div className="App">
@@ -125,19 +132,19 @@ function App() {
                         <h2>Boards</h2>
                         <div className="boards-list">
                             {boardData.map((board) => (
-                              <li key={board.id}>
-                                <button
-                                    key={board.id}
-                                    onClick={() => handleSelectBoard(board.id)}
-                                    className={`board-button ${
-                                        selectedBoardId === board.id ? 'selected' : ''
-                                    }`}
-                                >
-                                    {board.title} - {board.owner}
-                                </button>
-                              </li>    
+                                <li key={board.id}>
+                                    <button
+                                        key={board.id}
+                                        onClick={() => handleSelectBoard(board.id)}
+                                        className={`board-button ${selectedBoardId === board.id ? 'selected' : ''
+                                            }`}
+                                    >
+                                        {board.title} - {board.owner}
+                                    </button>
+                                </li>
                             ))}
                         </div>
+
                         <h2>Cards for Board: {selectedBoardTitle}</h2>
                         <div className="cards-container">
                             <CardList cards={cardData} onDelete={handleDeleteCard} onLike={handleLikeCard} />
@@ -147,15 +154,23 @@ function App() {
                     {/* Forms Section */}
                     <div className="form-row">
                         <div className="new-board-form-container">
-                            <h2>Add a New Board</h2>
-                            <NewBoardForm onBoardAdd={handleAddBoard} />
+                            <div className="toggle-container">
+                                <h2>Add a New Board</h2>
+                                <div className={`new-board-form ${showNewBoardForm ? '' : 'hidden'}`}>
+                                    <NewBoardForm onBoardAdd={handleAddBoard} />
+                                </div>
+                                <button onClick={toggleNewBoardForm} className="new-board-form-toggle-button">
+                                    {showNewBoardForm ? 'Hide New Board Form' : 'Show New Board Form'}
+                                </button>
+                            </div>
                         </div>
 
-                        <div className="new-card-form-container">
-                            <h2>Add a New Card</h2>
-                            <NewCardForm boardId={selectedBoardId}
-                            onCardAdd={handleAddCard} />
-                        </div>
+                        {selectedBoardId && (
+                            <div className="new-card-form-container">
+                                <h2>Add a New Card</h2>
+                                <NewCardForm onCardAdd={handleAddCard} boardId={selectedBoardId} />
+                            </div>
+                        )}
                     </div>
                 </div>
             </main>
