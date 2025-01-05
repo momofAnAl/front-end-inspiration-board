@@ -16,6 +16,7 @@ h2 {
   display: inline-block;
   background-color: rgb(252, 192, 220);
   color: rgb(19, 18, 18);
+  text-align: center;
 }
 
 h1 {
@@ -26,10 +27,10 @@ h1 {
 h2 {
   border: 2px solid rgb(153, 93, 133);
   box-shadow: -15px 7px 1px #884971;
+  text-align: center;
 }
 
 .page-container {
-  /* display: grid; */
   display: flex;
   flex-wrap:wrap;
   grid-template-columns: 2fr 2fr;
@@ -39,10 +40,14 @@ h2 {
 .boards-container {
   display: flex;
   flex-wrap:wrap;
-  flex-direction: column;
+  flex-direction: row;
   gap: 1.5rem;
 }
 
+.toggle-container {
+  display: flex;
+  flex-wrap: wrap; 
+}
 
 .boards-list {
   overflow-y: auto;
@@ -103,9 +108,9 @@ h2 {
 .new-board-form-submit-btn,
 .new-card-form-submit-btn {
   padding: 0.5em;
-  background-color: rgb(7, 7, 7);
-  text-align: center;
+  background-color: black;
   color: white;
+  text-align: center;
   border: 2px solid black;
   cursor: pointer;
 }
@@ -116,14 +121,16 @@ h2 {
 }
 
 .new-board-form-toggle-button {
-  background-color: rgb(7, 7, 7);
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
+  font-family: "Permanent Marker", cursive;
+  background-color: pink;
+  box-shadow: -15px 7px 1px #884971;
+  color: black;
+  text-align: center;
   font-size: 1rem;
+  padding: 1rem 2rem;
   cursor: pointer;
   border: 2px solid black;
-  margin-top: 1rem;
+  margin-bottom: 4rem;
 }
 
 .new-board-form {

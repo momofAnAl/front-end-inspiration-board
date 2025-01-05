@@ -130,7 +130,7 @@ function App() {
                     {/* Board List */}
                     <div className="board-container">
                         <h2>Boards</h2>
-                        <div className="boards-list">
+                        <ol className="boards-list">
                             {boardData.map((board) => (
                                 <li key={board.id}>
                                     <button
@@ -143,7 +143,7 @@ function App() {
                                     </button>
                                 </li>
                             ))}
-                        </div>
+                        </ol>
 
                         <h2>Cards for Board: {selectedBoardTitle}</h2>
                         <div className="cards-container">
