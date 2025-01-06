@@ -1,29 +1,28 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
-const NewCardForm = ({ onCardAdd, boardId }) => {
-  const [cardForm, setCardForm] = useState({
-    message: '',
-  });
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    onCardAdd(cardForm);
-    setCardForm({
-      message: '',
-    });
-  };
+const NewCardForm = ({ handleSubmit, boardId }) => {
+  const [cardForm, setCardForm] = useState({ message: '' });
+  const [error, setError] = useState('');
 
   const handleChange = (event) => {
-    const {name, value} = event.target;
-    setCardForm({
-      ...cardForm,
-      [name]: value
-    });
+    const { name, value } = event.target;
+    setCardForm({ ...cardForm, [name]: value });
+  };
+
+  const onHandleSubmit = (event) => {
+    event.preventDefault();
+    if (!cardForm.message) {
+      setError('Message is required');
+      return;
+    }
+    setError('');
+    handleSubmit({ ...cardForm, boardId });
+    setCardForm({ message: '' });
   };
 
   return (
-    <form className="new-card-form" onSubmit={handleSubmit}>
+    <form className="new-card-form" onSubmit={onHandleSubmit}>
       <div>
         <label htmlFor="message">Message: </label>
         <input
@@ -33,6 +32,7 @@ const NewCardForm = ({ onCardAdd, boardId }) => {
         onChange={handleChange}
         />
       </div>
+      {error && <p className="error">{error}</p>}
       <button className="new-card-form-submit-btn" type="submit">
           Submit
       </button>
@@ -41,7 +41,7 @@ const NewCardForm = ({ onCardAdd, boardId }) => {
 };
 
 NewCardForm.propTypes = {
-    onCardAdd: PropTypes.func.isRequired,
+    handleSubmit: PropTypes.func.isRequired,
     boardId: PropTypes.number.isRequired,
 };
 
