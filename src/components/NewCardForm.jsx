@@ -8,7 +8,8 @@ const NewCardForm = ({ handleSubmit, boardId }) => {
   const handleChange = (event) => {
     const { name, value } = event.target;
     setCardForm({ ...cardForm, [name]: value });
-  };
+    setError('');
+  }; 
 
   const onHandleSubmit = (event) => {
     event.preventDefault();
