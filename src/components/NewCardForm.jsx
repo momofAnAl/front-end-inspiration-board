@@ -16,6 +16,10 @@ const NewCardForm = ({ handleSubmit, boardId }) => {
       setError('Message is required');
       return;
     }
+    if (cardForm.message.length > 40) {
+      setError('Card message must be 40 characters or less');
+      return;
+    }
     setError('');
     handleSubmit({ ...cardForm, boardId });
     setCardForm({ message: '' });
