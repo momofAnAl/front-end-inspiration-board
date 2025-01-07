@@ -6,7 +6,8 @@ import NewCardForm from './components/NewCardForm';
 import NewBoardForm from './components/NewBoardForm';
 import Board from './components/Board';
 
-const kBaseURL = 'https://inspired-minds.onrender.com';
+
+const kBaseURL = import.meta.env.VITE_APP_BACKEND_URL;
 const convertFromApi = (apiCard) => {
     return {
         id: apiCard.id,
@@ -70,10 +71,6 @@ function App() {
 
     // Add New Card
     const handleAddCard = (card) => {
-        if (!selectedBoardId) {
-            alert('Please select a board before adding a card.');
-            return;
-        }
         axios.post(`${kBaseURL}/boards/${selectedBoardId}/cards`, card)
             .then((response) => {
                 const newCard = convertFromApi(response.data);
