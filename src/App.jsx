@@ -154,7 +154,7 @@ function App() {
                             <div className="toggle-container">
                                 <h2>Add a New Board</h2>
                                 <div className={`new-board-form ${showNewBoardForm ? '' : 'hidden'}`}>
-                                    <NewBoardForm handleSubmit={handleAddBoard} />
+                                    <NewBoardForm handleSubmit={handleAddBoard} selectedBoardId={selectedBoardId}/>
                                 </div>
                                 <button onClick={toggleNewBoardForm} className="new-board-form-toggle-button">
                                     {showNewBoardForm ? 'Hide New Board Form' : 'Show New Board Form'}
