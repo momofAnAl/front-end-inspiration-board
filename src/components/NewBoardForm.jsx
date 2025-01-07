@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './NewBoardForm.css';
 import PropTypes from 'prop-types';
 
-const NewBoardForm = ({handleSubmit}) => {
+const NewBoardForm = ({handleSubmit, boardId}) => {
     const [boardForm, setBoardForm] = useState({
         title: '',
         owner: '',
@@ -24,6 +24,10 @@ const NewBoardForm = ({handleSubmit}) => {
         handleSubmit(boardForm);
         setBoardForm({ title: '', owner: '' });
       };
+
+      useEffect(() => {
+        setError('');
+    }, [boardId]);
 
     return (
         <form className="new-board-form" onSubmit={onHandleSubmit}>
@@ -55,6 +59,7 @@ const NewBoardForm = ({handleSubmit}) => {
 
 NewBoardForm.propTypes = {
     handleSubmit: PropTypes.func.isRequired,
+    boardId: PropTypes.number,
 };
 
 export default NewBoardForm;
