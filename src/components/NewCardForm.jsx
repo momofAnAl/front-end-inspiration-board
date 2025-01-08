@@ -13,7 +13,7 @@ const NewCardForm = ({ handleSubmit, boardId }) => {
   const onHandleSubmit = (event) => {
     event.preventDefault();
     if (!cardForm.message) {
-      setError('Message is required');
+      setError('Message is required.');
       return;
     }
     if (cardForm.message.length > 40) {
@@ -36,7 +36,7 @@ const NewCardForm = ({ handleSubmit, boardId }) => {
         onChange={handleChange}
         />
       </div>
-      {error && <p className="error">{error}</p>}
+      {error && <p className="error-message">{error}</p>}
       <button className="new-card-form-submit-btn" type="submit">
           Submit
       </button>

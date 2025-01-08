@@ -17,7 +17,7 @@ const NewBoardForm = ({handleSubmit}) => {
       const onHandleSubmit = (event) => {
         event.preventDefault();
         if (!boardForm.title || !boardForm.owner) {
-          setError('Title and Owner are required');
+          setError('Title and Owner are required.');
           return;
         }
         setError('');
@@ -45,7 +45,7 @@ const NewBoardForm = ({handleSubmit}) => {
                 onChange={handleChange}
                 />
             </div>
-            {error && <p className="error">{error}</p>}
+            {error && <p className="error-message">{error}</p>}
             <button className="new-board-form-submit-btn" type="submit">
                 Submit
             </button>
