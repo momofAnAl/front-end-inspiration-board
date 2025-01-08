@@ -124,50 +124,44 @@ function App() {
             </header>
             <main>
                 <div className="page-container">
-                    {/* Board List */}
                     <div className="board-container">
                         <h2>Boards</h2>
-                        <ol className="boards-list">
+                        <div className="boards-list">
                             {boardData.map((board) => (
                                 <li key={board.id}>
                                     <button
                                         key={board.id}
                                         onClick={() => handleSelectBoard(board.id)}
-                                        className={`board-button ${selectedBoardId === board.id ? 'selected' : ''
-                                            }`}
+                                        className={`board-button ${selectedBoardId === board.id ? 'selected' : ''}`}
                                     >
                                         {board.title} - {board.owner}
                                     </button>
                                 </li>
                             ))}
-                        </ol>
-
+                        </div>
+                    </div>
+                    <div className="form-container">
+                        <div className="new-board-form-container">
+                            <h2>Add a New Board</h2>
+                            <div className={`new-board-form ${showNewBoardForm ? '' : 'hidden'}`}>
+                                <NewBoardForm onBoardAdd={handleAddBoard} />
+                            </div>
+                            <button onClick={toggleNewBoardForm} className="new-board-form-toggle-button">
+                                {showNewBoardForm ? 'Hide New Board Form' : 'Show New Board Form'}
+                            </button>
+                        </div>
+                        {selectedBoardId && (
+                            <div className="new-card-form-container">
+                                <h2>Add a New Card</h2>
+                                <NewCardForm boardId={selectedBoardId} onCardAdd={handleAddCard} />
+                            </div>
+                        )}
+                    </div>
+                    <div className="cards-section">
                         <h2>Cards for Board: {selectedBoardTitle}</h2>
                         <div className="cards-container">
                             <CardList cards={cardData} onDelete={handleDeleteCard} onLike={handleLikeCard} />
                         </div>
-                    </div>
-
-                    {/* Forms Section */}
-                    <div className="form-row">
-                        <div className="new-board-form-container">
-                            <div className="toggle-container">
-                                <h2>Add a New Board</h2>
-                                <div className={`new-board-form ${showNewBoardForm ? '' : 'hidden'}`}>
-                                    <NewBoardForm handleSubmit={handleAddBoard} boardId={selectedBoardId}/>
-                                </div>
-                                <button onClick={toggleNewBoardForm} className="new-board-form-toggle-button">
-                                    {showNewBoardForm ? 'Hide New Board Form' : 'Show New Board Form'}
-                                </button>
-                            </div>
-                        </div>
-
-                        {selectedBoardId && (
-                            <div className="new-card-form-container">
-                                <h2>Add a New Card</h2>
-                                <NewCardForm handleSubmit={handleAddCard} boardId={selectedBoardId} />
-                            </div>
-                        )}
                     </div>
                 </div>
             </main>
@@ -176,3 +170,4 @@ function App() {
 }
 
 export default App;
+
