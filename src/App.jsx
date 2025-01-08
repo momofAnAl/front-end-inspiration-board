@@ -144,7 +144,7 @@ function App() {
                         <div className="new-board-form-container">
                             <h2>Add a New Board</h2>
                             <div className={`new-board-form ${showNewBoardForm ? '' : 'hidden'}`}>
-                                <NewBoardForm onBoardAdd={handleAddBoard} />
+                                <NewBoardForm handleSubmit={handleAddBoard} selectedBoardId={selectedBoardId}/>
                             </div>
                             <button onClick={toggleNewBoardForm} className="new-board-form-toggle-button">
                                 {showNewBoardForm ? 'Hide New Board Form' : 'Show New Board Form'}
@@ -153,7 +153,7 @@ function App() {
                         {selectedBoardId && (
                             <div className="new-card-form-container">
                                 <h2>Add a New Card</h2>
-                                <NewCardForm boardId={selectedBoardId} onCardAdd={handleAddCard} />
+                                <NewCardForm handleSubmit={handleAddCard} boardId={selectedBoardId} />
                             </div>
                         )}
                     </div>
