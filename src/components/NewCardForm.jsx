@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 const NewCardForm = ({ handleSubmit, boardId }) => {
@@ -8,7 +8,8 @@ const NewCardForm = ({ handleSubmit, boardId }) => {
   const handleChange = (event) => {
     const { name, value } = event.target;
     setCardForm({ ...cardForm, [name]: value });
-  };
+    setError('');
+  }; 
 
   const onHandleSubmit = (event) => {
     event.preventDefault();
@@ -24,6 +25,10 @@ const NewCardForm = ({ handleSubmit, boardId }) => {
     handleSubmit({ ...cardForm, boardId });
     setCardForm({ message: '' });
   };
+
+  useEffect(() => {
+    setError('');
+  }, [boardId]);
 
   return (
     <form className="new-card-form" onSubmit={onHandleSubmit}>
