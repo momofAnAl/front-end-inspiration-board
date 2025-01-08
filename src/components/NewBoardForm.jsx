@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import './NewBoardForm.css';
 import PropTypes from 'prop-types';
 
-const NewBoardForm = ({handleSubmit, boardId}) => {
+const NewBoardForm = ({ handleSubmit, selectedBoardId }) => {
     const [boardForm, setBoardForm] = useState({
         title: '',
         owner: '',
@@ -12,23 +12,24 @@ const NewBoardForm = ({handleSubmit, boardId}) => {
     const handleChange = (event) => {
         const { name, value } = event.target;
         setBoardForm({ ...boardForm, [name]: value });
+        setError('');
       };
     
-      const onHandleSubmit = (event) => {
+    const onHandleSubmit = (event) => {
         event.preventDefault();
         if (!boardForm.title || !boardForm.owner) {
-          setError('Title and Owner are required');
+          setError('Title and Owner are required.');
           return;
         }
         setError('');
         handleSubmit(boardForm);
         setBoardForm({ title: '', owner: '' });
-      };
+    };
 
-      useEffect(() => {
+    useEffect(() => {
         setError('');
-    }, [boardId]);
-
+    }, [selectedBoardId]);
+      
     return (
         <form className="new-board-form" onSubmit={onHandleSubmit}>
             <div>
@@ -49,7 +50,7 @@ const NewBoardForm = ({handleSubmit, boardId}) => {
                 onChange={handleChange}
                 />
             </div>
-            {error && <p className="error">{error}</p>}
+            {error && <p className="error-message">{error}</p>}
             <button className="new-board-form-submit-btn" type="submit">
                 Submit
             </button>
@@ -59,7 +60,7 @@ const NewBoardForm = ({handleSubmit, boardId}) => {
 
 NewBoardForm.propTypes = {
     handleSubmit: PropTypes.func.isRequired,
-    boardId: PropTypes.number,
+    selectedBoardId: PropTypes.number
 };
 
 export default NewBoardForm;
