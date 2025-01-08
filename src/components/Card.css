@@ -1,12 +1,12 @@
 .card-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 2rem; /* Adjust the gap between cards */
-  width: 100%; /* Ensure the container takes up the full width */
+  gap: 2rem; 
+  width: 100%; 
 }
 
 .card-item {
-  flex: 1 1 calc(33.333% - 2rem); /* Adjust the width of each card */
+  flex: 1 1 calc(33.333% - 2rem);
   box-sizing: border-box;
   margin-top: 20px;
   font-family: "Arial", sans-serif;
@@ -20,18 +20,6 @@
   text-align: center;
   padding: 1rem;
 }
-
-/* .card-item button {
-  background-color: rgb(255, 0, 200);
-  color: white;
-  border: none;
-  padding: 0.3rem 0.5rem;
-  border-radius: 4px;
-  cursor: pointer;
-}
-.card-item button:hover {
-  background-color: darkred;
-} */
 
 
 

@@ -13,12 +13,13 @@
 }
 
 .boards-list {
-    max-height: 10rem;
-    min-height: 10rem;
+    max-height: 20rem;
+    min-height: 15rem;
     overflow-y: auto;
     margin-right: 2rem;
     border: rgb(103, 102, 102) solid 1px;
     padding: 2rem;
+    width: 100%;
 }
 
 .board-item {
